@@ -1,0 +1,160 @@
+.pokedex-controls {
+  border-radius: 0px 12px 12px 0px;
+  background-color: #DC0A2D;
+  box-sizing: border-box;
+
+  width: 208px;
+  height: 266px;
+
+  padding: 5px;
+}
+
+.pokedex-controls-box {
+  border-radius: 12px;
+  box-shadow: inset 0px 0px 1px 5px #C90929;
+  border: 2px solid #89061C;
+  box-sizing: border-box;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.controls-bumper {
+  background-color: #2B2B2B;
+  border-radius: 6px;
+
+  width: 100%;
+  height: 50px;
+}
+
+.controls-buttons-grid {
+  background-color: #28AAFD;
+  border-radius: 6px;
+
+  width: 100%;
+  height: 65px;
+
+  margin-top: 16px;
+}
+
+.line {
+  width: 100%;
+  height: 50%;
+  
+  display: flex;
+  justify-content: flex-start;
+
+  box-sizing: border-box;
+  border-bottom: 2px solid #1E7DBB;
+}
+
+.line:last-child {
+  border-radius: 6px;
+}
+
+.control-button {
+  width: 20%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.control-button:not(:last-child) {
+  border-right: 2px solid #1E7DBB;
+}
+
+.pokedex-controls-box > footer {
+  margin-top: 8px;
+
+  width: 100%;
+  height: 80px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.controls-footer-column-left {
+  width: 70px;
+  padding-top: 16px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.gray-buttons {
+  background-color: #DEDEDE;
+  border-radius: 6px;
+  border-bottom: 2px solid #787878;
+  box-sizing: border-box;
+
+  height: 26px;
+  width: 100%;
+
+  display: flex;
+  justify-content: flex-start;
+}
+
+.gray-button {
+  width: 50%;
+}
+
+.gray-button:not(:last-child) {
+  box-sizing: border-box;
+  border-right: 2px solid #787878;
+}
+
+.footer-bumper {
+  background-color: #2B2B2B;
+  border-radius: 6px;
+
+  width: 100%;
+  height: 24px;
+}
+
+.controls-footer-column-right {
+  width: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.controls-double-buttons {
+  width: 100%;
+  height: 15px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.bumper-button {
+  background-color: #2B2B2B;
+  border-radius: 6px;
+
+  width: 30px;
+  height: 6px;
+}
+
+.controls-yellow-circle {
+  background-color: #FFDF18;
+  border-radius: 100%;
+  
+  width: 22px;
+  height: 22px;
+
+  box-sizing: border-box;
+  padding: 4px;
+}
+
+.controls-yellow-circle-glass {
+  background-color: #FFF7C4;
+  border-radius: 100%;
+  width: 8px;
+  height: 8px;
+}

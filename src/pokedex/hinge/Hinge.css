@@ -1,0 +1,51 @@
+.hinge {
+  position: absolute;
+  bottom: 0px;
+  left: 207px;
+  
+  width: 24px;
+  height: 266px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.hinge > header,
+.hinge > footer {
+  background-color: #DC0A2D;
+  border: 2px solid #89061C;
+  border-right: 4px solid #89061C;
+  border-radius: 4px;
+  
+  height: 22px;
+  width: 100%;
+}
+
+.hinge > .body {
+  background-color: #DC0A2D;
+  border: 2px solid #89061C;
+  border-right: 4px solid #89061C;
+  border-radius: 4px;
+  
+  height: 222px;
+  width: 100%;
+}
+
+.hinge > * {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.crest-white {
+  background-color: #DEB4BB;
+  height: 100%;
+  width: 4px;
+  margin-left: 5px;
+}
+
+.crest-light-white {
+  background-color: #DD546B;
+  height: 100%;
+  width: 2px;
+  margin-left: 2px;
+}
