@@ -4,7 +4,9 @@
   box-sizing: border-box;
 
   width: 208px;
-  height: 266px;
+  height: 270px;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
 
   padding: 5px;
 }

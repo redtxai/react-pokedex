@@ -1,10 +1,9 @@
 .hinge {
   position: absolute;
   bottom: 0px;
-  left: 207px;
-  
-  width: 24px;
-  height: 266px;
+  left: 209px;
+  width: 28px;
+  height: 272px;
 
   display: flex;
   flex-direction: column;
@@ -19,6 +18,7 @@
   
   height: 22px;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .hinge > .body {
@@ -27,8 +27,9 @@
   border-right: 4px solid #89061C;
   border-radius: 4px;
   
-  height: 222px;
+  height: 228px;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .hinge > * {

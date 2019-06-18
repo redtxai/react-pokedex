@@ -1,0 +1,42 @@
+.pokedex-cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  border-radius: 0px 0px 12px 12px;
+  background-color: #DC0A2D;
+  box-sizing: border-box;
+
+  width: 209px;
+  height: 270px;
+  padding: 5px;
+
+  z-index: 10;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  backface-visibility: hidden;
+
+  cursor: pointer;
+}
+
+.triangle {
+  width: 100%;
+  text-align: left;
+}
+
+.triangle > svg {
+  fill: #FFE748;
+  stroke: #89061C;
+  stroke-width: 1;
+}
+
+.pokedex-cover > footer {
+  width: 45%;
+  height: 4px;
+  border: 1px solid #89061C;
+  border-radius: 30px;
+  box-shadow: inset 0px 0px 1px 2px #C90929;
+}

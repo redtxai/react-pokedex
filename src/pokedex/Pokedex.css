@@ -4,3 +4,19 @@
   justify-content: flex-start;
   align-items: flex-end;
 }
+
+.turn-effect {
+  width: 445px;
+  height: 270px;
+  position: absolute;
+  z-index: 1;
+
+  transform-style: preserve-3d;
+  transition: transform 1s;
+  transform-origin: 222px 0px;
+}
+
+.flip {
+  transition: transform 1s;
+  transform:rotateY(-180deg);
+}
