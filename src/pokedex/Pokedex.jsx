@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
-import PokemonData from './pokemon-data/PokemonData.js'
-import PokedexCover from './pokedex-cover/PokedexCover.js'
-import Hinge from './hinge/Hinge.js'
-import PokedexControls from './pokedex-controls/PokedexControls.js'
+import PokemonData from './pokemon-data/PokemonData'
+import PokedexCover from './pokedex-cover/PokedexCover'
+import Hinge from './hinge/Hinge'
+import PokedexControls from './pokedex-controls/PokedexControls'
 
 import './Pokedex.css'
 
@@ -16,7 +16,6 @@ class Pokedex extends Component {
   }
 
   handleClick() {
-    console.log('teste')
     this.setState(state => ({
       isFlipped: !state.isFlipped
     }));
