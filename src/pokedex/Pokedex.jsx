@@ -10,7 +10,7 @@ import './Pokedex.css'
 class Pokedex extends Component {
   constructor(props) {
     super(props);
-    this.state = {isFlipped: false};
+    this.state = { isFlipped: false };
 
     this.handleClick = this.handleClick.bind(this);
   }
@@ -26,9 +26,10 @@ class Pokedex extends Component {
     if (this.state.isFlipped) {
       className += ' flip';
     }
+    const { sprite } = this.props
     return (
       <div className="pokedex">
-        <PokemonData/>
+        <PokemonData sprite={sprite}/>
           <div className={className}>
             <PokedexCover onClick={this.handleClick}/>
             <PokedexControls/>
