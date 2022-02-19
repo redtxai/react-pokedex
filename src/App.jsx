@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 
-import Pokedex from './pokedex/Pokedex'
+import { Pokedex } from './pokedex/Pokedex'
 import SearchPokemon from './components/SearchPokemon'
 
 import './App.css';
