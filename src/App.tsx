@@ -1,12 +1,15 @@
 import React, { Fragment, useState } from 'react';
 
 import { Pokedex } from './pokedex/Pokedex'
-import SearchPokemon from './components/SearchPokemon'
+import { SearchPokemon } from './components/SearchPokemon'
 
 import './App.css';
+import { PokemonValue } from './models/Pokemon.model';
 
-function App() {
-  const initialPokemonValue = {
+
+
+export const App = () => {
+  const initialPokemonValue: PokemonValue = {
     id: '',
     name: '',
     sprites: {}
@@ -20,5 +23,3 @@ function App() {
     </Fragment>
   )
 }
-
-export default App;

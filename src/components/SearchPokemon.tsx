@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import axios from "axios"
+import axios from 'axios'
+
+import { PokemonValue } from '../models/Pokemon.model';
 
 // import './SearchPokemon.css';
 
-export default ({ setSelectedPokemon }) => {
+interface SearchPokemonProps {
+  setSelectedPokemon: React.Dispatch<React.SetStateAction<PokemonValue>>
+}
+
+export const SearchPokemon = ({ setSelectedPokemon }: SearchPokemonProps ) => {
   const initialListValue = []
   const [pokemonList, setPokemonList] = useState(initialListValue);
 
