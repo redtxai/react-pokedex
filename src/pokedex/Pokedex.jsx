@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import PokemonData from './pokemon-data/PokemonData'
-import PokedexCover from './pokedex-cover/PokedexCover'
+import { PokedexCover } from './pokedex-cover/PokedexCover'
 import Hinge from './hinge/Hinge'
 import PokedexControls from './pokedex-controls/PokedexControls'
 
