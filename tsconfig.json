@@ -1,6 +1,6 @@
 {
   "include": [
-      "**/*"
+      "./src/index.tsx"
   ],
   "compilerOptions": {
       "target": "es5",
