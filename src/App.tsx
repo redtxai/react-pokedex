@@ -1,8 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 
 import { Pokedex } from './pokedex/Pokedex'
 import { SearchPokemon } from './components/SearchPokemon'
-import { SearchPokemonContext, SearchPokemonProvider } from './context/SelectPokemonProvider'
 
 import './App.css';
 import { PokemonValue } from './models/Pokemon.model';
