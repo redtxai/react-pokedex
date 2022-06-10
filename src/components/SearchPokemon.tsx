@@ -31,7 +31,8 @@ export const SearchPokemon = ({ setSelectedPokemon }: SearchPokemonProps ) => {
         "https://pokeapi.co/api/v2/pokemon/"
       )
       .then((res) => {
-        setPokemonList(res.data.results)
+        const pokemonDataList: SearchPokemonData = res.data
+        setPokemonList(pokemonDataList.results)
       })
   }, [])
 
