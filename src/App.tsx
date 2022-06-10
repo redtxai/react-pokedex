@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 
 import { Pokedex } from './pokedex/Pokedex'
 import { SearchPokemon } from './components/SearchPokemon'
@@ -17,9 +17,9 @@ export const App = () => {
   const [selectedPokemon, setSelectedPokemon] = useState(initialPokemonValue)
 
   return (
-    <Fragment>
-      <SearchPokemon setSelectedPokemon={setSelectedPokemon}/>
-      <Pokedex sprite={selectedPokemon.sprites.front_default}/>
-    </Fragment>
+      <section className="main-section">
+        <SearchPokemon setSelectedPokemon={setSelectedPokemon}/>
+        <Pokedex sprite={selectedPokemon.sprites.front_default}/>
+      </section>
   )
 }

@@ -31,3 +31,10 @@
     transform: rotate(360deg);
   }
 }
+
+.main-section {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
