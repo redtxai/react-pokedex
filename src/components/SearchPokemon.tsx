@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
 
 import { PokemonValue } from '../models/Pokemon.model';
+import { SearchPokemonContext, SearchPokemonProvider } from '../context/SelectPokemonProvider';
 
 // import './SearchPokemon.css';
 
@@ -22,7 +23,8 @@ interface SearchPokemonValue {
 }
 
 export const SearchPokemon = ({ setSelectedPokemon }: SearchPokemonProps ) => {
-  const initialListValue = []
+  const { cache, setNewCache } = useContext(SearchPokemonContext)
+  const initialListValue: SearchPokemonValue[] = []
   const [pokemonList, setPokemonList] = useState(initialListValue);
 
   useEffect(() => {
@@ -40,24 +42,37 @@ export const SearchPokemon = ({ setSelectedPokemon }: SearchPokemonProps ) => {
     if (!target.value) {
       return
     }
+
+    const selectedPokemon = pokemonList[target.value]
+    const cachedPokemon = cache[selectedPokemon.name]
+
+    if (cachedPokemon) {
+      setSelectedPokemon(cachedPokemon)
+      return
+    }
+
     axios
       .get<PokemonValue>(
-        target.value
+        selectedPokemon.url
       )
       .then((res) => {
         const pokemon: PokemonValue = res.data
+        cache[selectedPokemon.name] = pokemon
+        setNewCache(cache)
         setSelectedPokemon(pokemon)
       })
   }
 
   return (
-    <select onChange={handleSelectPokemon}>
-      <option/>
-      {
-        pokemonList.map(({ name, url }, index) => {
-          return <option key={index} value={url}>{name}</option>
-        })
-      }
-    </select>
+    <SearchPokemonProvider>
+      <select onChange={handleSelectPokemon}>
+        <option/>
+        {
+          pokemonList.map((pokemon: SearchPokemonValue, index) => {
+            return <option key={index} value={index}>{pokemon.name}</option>
+          })
+        }
+      </select>
+    </SearchPokemonProvider>
   )
 }

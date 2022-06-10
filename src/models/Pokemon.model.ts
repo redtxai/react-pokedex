@@ -1,8 +1,8 @@
-export interface Sprite {
+export type Sprite = {
   front_default?: string
 }
 
-export interface PokemonValue {
+export type PokemonValue = {
   id: string,
   name: string,
   sprites: Sprite

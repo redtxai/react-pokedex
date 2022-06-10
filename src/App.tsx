@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import { Pokedex } from './pokedex/Pokedex'
 import { SearchPokemon } from './components/SearchPokemon'
+import { SearchPokemonContext, SearchPokemonProvider } from './context/SelectPokemonProvider'
 
 import './App.css';
 import { PokemonValue } from './models/Pokemon.model';
@@ -17,9 +18,9 @@ export const App = () => {
   const [selectedPokemon, setSelectedPokemon] = useState(initialPokemonValue)
 
   return (
-      <section className="main-section">
-        <SearchPokemon setSelectedPokemon={setSelectedPokemon}/>
-        <Pokedex sprite={selectedPokemon.sprites.front_default}/>
-      </section>
+    <section className="main-section">
+      <SearchPokemon setSelectedPokemon={setSelectedPokemon}/>
+      <Pokedex sprite={selectedPokemon.sprites.front_default}/>
+    </section>
   )
 }
