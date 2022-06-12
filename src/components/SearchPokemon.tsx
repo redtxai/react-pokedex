@@ -2,24 +2,16 @@ import React, { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
 
 import { PokemonValue } from '../models/Pokemon.model';
+import { SearchPokemonData, SearchPokemonValue } from '../models/SearchPokemon.model';
 import { SearchPokemonContext } from '../context/SelectPokemonProvider';
 
 // import './SearchPokemon.css';
 
-interface SearchPokemonData {
-  count: number;
-  next: string;
-  previous: string;
-  results: SearchPokemonValue[];
-}
-
-interface SearchPokemonValue {
-  name: string;
-  url: string;
-}
-
 export const SearchPokemon = () => {
-  const { cache, setNewCache, selectedPokemon, selectNewPokemon } = useContext(SearchPokemonContext)
+  const {
+    cache, setNewCache,
+    selectedPokemon, selectNewPokemon,
+    pokemonSearchService } = useContext(SearchPokemonContext)
 
   const initialListValue: SearchPokemonValue[] = []
   const [pokemonList, setPokemonList] = useState(initialListValue);
@@ -27,36 +19,31 @@ export const SearchPokemon = () => {
   const selectPokemon = (newPokemon: PokemonValue) => newPokemon.id !== selectedPokemon.id && selectNewPokemon(newPokemon)
 
   useEffect(() => {
-    axios
-      .get<SearchPokemonData>(
-        "https://pokeapi.co/api/v2/pokemon/"
-      )
+    pokemonSearchService.getAllPokemon()
       .then((res) => {
         const pokemonDataList: SearchPokemonData = res.data
         setPokemonList(pokemonDataList.results)
       })
-  }, [])
+  }, [pokemonSearchService])
 
-  const handleSelectPokemon = ({ target }) => {
-    if (!target.value) {
+  const handleSelectPokemon = (event: React.FormEvent<HTMLSelectElement>) => {
+    event.preventDefault();
+    if (!event.currentTarget.value) {
       return
     }
 
-    const selectedPokemon = pokemonList[target.value]
-    const cachedPokemon = cache[selectedPokemon.name]
+    const selectedSearchPokemon = pokemonList[+event.currentTarget.value]
+    const cachedPokemon = cache[selectedSearchPokemon.name]
 
     if (cachedPokemon) {
       selectPokemon(cachedPokemon)
       return
     }
 
-    axios
-      .get<PokemonValue>(
-        selectedPokemon.url
-      )
+    pokemonSearchService.getPokemon(selectedSearchPokemon.url)
       .then((res) => {
         const pokemon: PokemonValue = res.data
-        cache[selectedPokemon.name] = pokemon
+        cache[selectedSearchPokemon.name] = pokemon
         setNewCache(cache)
         selectPokemon(pokemon)
       })

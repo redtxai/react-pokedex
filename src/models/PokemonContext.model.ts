@@ -1,3 +1,4 @@
+import { PokemonSearchService } from "../services/PokemonSearchService.service";
 import { PokemonValue } from "./Pokemon.model"
 
 export type PokemonDataState = {
@@ -6,6 +7,8 @@ export type PokemonDataState = {
 
   selectedPokemon: PokemonValue;
   selectNewPokemon: (pokemon: PokemonValue) => void;
+
+  pokemonSearchService: PokemonSearchService
 }
 
 export type PokemonDataCache = Record<string, PokemonValue>
