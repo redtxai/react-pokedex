@@ -7,15 +7,11 @@ import { PokedexControls } from './pokedex-controls/PokedexControls'
 
 import './Pokedex.css'
 
-interface PokedexProps {
-  sprite: string
-}
-
-export const Pokedex = ({ sprite }: PokedexProps) => {
+export const Pokedex = () => {
   const [isFlipped, toggleIsFlipped] = useState(false);
 
   return (<div className="pokedex">
-      <PokemonData sprite={sprite}/>
+      <PokemonData/>
         <div className={`turn-effect ${isFlipped ? ' flip' : ''}`}>
           <PokedexCover onClick={() => toggleIsFlipped(!isFlipped)}/>
           <PokedexControls/>

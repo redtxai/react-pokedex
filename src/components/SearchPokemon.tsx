@@ -2,13 +2,9 @@ import React, { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
 
 import { PokemonValue } from '../models/Pokemon.model';
-import { SearchPokemonContext, SearchPokemonProvider } from '../context/SelectPokemonProvider';
+import { SearchPokemonContext } from '../context/SelectPokemonProvider';
 
 // import './SearchPokemon.css';
-
-interface SearchPokemonProps {
-  setSelectedPokemon: React.Dispatch<React.SetStateAction<PokemonValue>>
-}
 
 interface SearchPokemonData {
   count: number;
@@ -22,10 +18,13 @@ interface SearchPokemonValue {
   url: string;
 }
 
-export const SearchPokemon = ({ setSelectedPokemon }: SearchPokemonProps ) => {
-  const { cache, setNewCache } = useContext(SearchPokemonContext)
+export const SearchPokemon = () => {
+  const { cache, setNewCache, selectedPokemon, selectNewPokemon } = useContext(SearchPokemonContext)
+
   const initialListValue: SearchPokemonValue[] = []
   const [pokemonList, setPokemonList] = useState(initialListValue);
+
+  const selectPokemon = (newPokemon: PokemonValue) => newPokemon.id !== selectedPokemon.id && selectNewPokemon(newPokemon)
 
   useEffect(() => {
     axios
@@ -47,7 +46,7 @@ export const SearchPokemon = ({ setSelectedPokemon }: SearchPokemonProps ) => {
     const cachedPokemon = cache[selectedPokemon.name]
 
     if (cachedPokemon) {
-      setSelectedPokemon(cachedPokemon)
+      selectPokemon(cachedPokemon)
       return
     }
 
@@ -59,12 +58,11 @@ export const SearchPokemon = ({ setSelectedPokemon }: SearchPokemonProps ) => {
         const pokemon: PokemonValue = res.data
         cache[selectedPokemon.name] = pokemon
         setNewCache(cache)
-        setSelectedPokemon(pokemon)
+        selectPokemon(pokemon)
       })
   }
 
   return (
-    <SearchPokemonProvider>
       <select onChange={handleSelectPokemon}>
         <option/>
         {
@@ -73,6 +71,5 @@ export const SearchPokemon = ({ setSelectedPokemon }: SearchPokemonProps ) => {
           })
         }
       </select>
-    </SearchPokemonProvider>
   )
 }
