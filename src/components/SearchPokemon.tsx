@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react'
-import axios from 'axios'
 
 import { PokemonValue } from '../models/Pokemon.model';
 import { SearchPokemonData, SearchPokemonValue } from '../models/SearchPokemon.model';
 import { SearchPokemonContext } from '../context/SelectPokemonProvider';
-
-// import './SearchPokemon.css';
+import { Search } from './search/Search';
 
 export const SearchPokemon = () => {
   const {
@@ -26,13 +24,8 @@ export const SearchPokemon = () => {
       })
   }, [pokemonSearchService])
 
-  const handleSelectPokemon = (event: React.FormEvent<HTMLSelectElement>) => {
-    event.preventDefault();
-    if (!event.currentTarget.value) {
-      return
-    }
-
-    const selectedSearchPokemon = pokemonList[+event.currentTarget.value]
+  const handleSelectPokemon = (pokemonIndex: number) => {
+    const selectedSearchPokemon = pokemonList[pokemonIndex]
     const cachedPokemon = cache[selectedSearchPokemon.name]
 
     if (cachedPokemon) {
@@ -50,13 +43,6 @@ export const SearchPokemon = () => {
   }
 
   return (
-      <select onChange={handleSelectPokemon}>
-        <option/>
-        {
-          pokemonList.map((pokemon: SearchPokemonValue, index) => {
-            return <option key={index} value={index}>{pokemon.name}</option>
-          })
-        }
-      </select>
+    <Search pokemonList={pokemonList} onPokemonSelected={handleSelectPokemon}></Search>
   )
 }
