@@ -9,6 +9,7 @@
   list-style-type: none;
   height: calc(100% - 21px);
   overflow-y: auto;
+  user-select: none;
 }
 
 .search-pokemon {
