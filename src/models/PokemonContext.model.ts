@@ -9,6 +9,9 @@ export type PokemonDataState = {
   selectNewPokemon: (pokemon: PokemonValue) => void;
 
   pokemonSearchService: PokemonSearchService
+
+  globalLoading: boolean
+  setNewGlobalLoading: (globalLoading: boolean) => void;
 }
 
 export type PokemonDataCache = Record<string, PokemonValue>

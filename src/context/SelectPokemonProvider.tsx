@@ -11,7 +11,10 @@ const contextDefaultValues: PokemonDataState = {
   selectedPokemon: DEFAULT_POKEMON,
   selectNewPokemon: () => {},
 
-  pokemonSearchService: new PokemonSearchService()
+  pokemonSearchService: new PokemonSearchService(),
+
+  globalLoading: false,
+  setNewGlobalLoading: () => {},
 };
 
 export const SearchPokemonContext = createContext<PokemonDataState>(
@@ -21,11 +24,14 @@ export const SearchPokemonContext = createContext<PokemonDataState>(
 export const SearchPokemonProvider: FC = ({ children }) => {
   const [cache, setCache] = useState<PokemonDataCache>(contextDefaultValues.cache);
   const [selectedPokemon, selectPokemon] = useState<PokemonValue>(contextDefaultValues.selectedPokemon);
-  const [pokemonSearchService] = useState<PokemonSearchService>(new PokemonSearchService());
+  const [pokemonSearchService] = useState<PokemonSearchService>(contextDefaultValues.pokemonSearchService);
+  const [globalLoading, setGlobalLoading] = useState<boolean>(contextDefaultValues.globalLoading);
 
   const setNewCache = (newCache: PokemonDataCache) => setCache(newCache);
 
   const selectNewPokemon = (newPokemon: PokemonValue) => newPokemon.id !== selectedPokemon.id && selectPokemon(newPokemon)
+
+  const setNewGlobalLoading = (globalLoading: boolean) => setGlobalLoading(globalLoading);
 
   return (
     <SearchPokemonContext.Provider
@@ -34,7 +40,9 @@ export const SearchPokemonProvider: FC = ({ children }) => {
         setNewCache,
         selectedPokemon,
         selectNewPokemon,
-        pokemonSearchService
+        pokemonSearchService,
+        globalLoading,
+        setNewGlobalLoading
       }}
     >
       {children}

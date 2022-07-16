@@ -42,7 +42,5 @@ export const SearchPokemon = () => {
       })
   }
 
-  return (
-    <Search pokemonList={pokemonList} onPokemonSelected={handleSelectPokemon}></Search>
-  )
+  return <Search pokemonList={pokemonList} onPokemonSelected={handleSelectPokemon}></Search>
 }

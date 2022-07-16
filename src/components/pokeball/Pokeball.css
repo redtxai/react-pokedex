@@ -1,0 +1,60 @@
+.pokeball {
+  position: relative;
+  width: var(--pokeball-size);
+  height: var(--pokeball-size);
+  border: calc(var(--pokeball-size)/25) solid black;
+  border-radius: var(--pokeball-size);
+  background: linear-gradient(to bottom, #EEEEEE 0%,#FFFFFF 100%);
+}
+
+.pokeball::before,
+.pokeball::after {
+  content: "";
+  display: block;
+}
+
+.pokeball::before {
+  width: var(--pokeball-size);
+  height: calc((var(--pokeball-size)/2) - (var(--pokeball-size)/25/2));
+  border-bottom: calc(var(--pokeball-size)/25) solid black;
+  border-radius: calc((var(--pokeball-size)/2) - 1px) calc((var(--pokeball-size)/2) - 1px) 0 0;
+  background: linear-gradient(to bottom, #d10000 0%, #ff0000 50%);
+}
+
+.pokeball::after {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  border-radius: var(--pokeball-size);
+  width: calc(var(--pokeball-size)/5);
+  height: calc(var(--pokeball-size)/5);
+  background: linear-gradient(to bottom, #fff 0%,#ccc 100%);
+  box-shadow: 0 0 0 calc(var(--pokeball-size)/50) black,
+                0 0 0 calc(var(--pokeball-size)/25) #ddd,
+                0 0 0 calc(var(--pokeball-size)/14) black,
+                0 0 calc(var(--pokeball-size)/10) calc(var(--pokeball-size)/17) rgba(0,0,0,0.4);
+}
+
+.pokeball,
+.pokeball::before,
+.pokeball::after{
+  transition: all 600ms cubic-bezier(.67,.4,.36,.75);
+}
+
+.pokeball-tada {
+  animation: bounce-out 2s ease infinite;
+}
+
+@keyframes bounce-out {
+  0% { transform: scale(1); }
+  25% { transform: scale(.95); }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(.3);
+  } 
+}
