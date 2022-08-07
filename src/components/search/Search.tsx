@@ -12,7 +12,7 @@ interface SearchProps {
 export const Search = ({ pokemonList, onPokemonSelected }: SearchProps) => {
   const timerRef = useRef(null);
 
-  const [pokemonListState, setPokemonListState] = useState([]);
+  const [pokemonListState, setPokemonListState] = useState<SearchPokemonValue[]>([]);
   const [inputSearchText, setInputSearchText] = useState('');
 
   useEffect(() => {
@@ -42,11 +42,11 @@ export const Search = ({ pokemonList, onPokemonSelected }: SearchProps) => {
       {
         pokemonListState.length > 0 && 
         <ul className="search-pokemon-list">
-          {pokemonListState.map((pokemon, index) => (
+          {pokemonListState.map(({ id, name }) => (
             <li className="search-pokemon"
-              key={index}
-              onClick={() => onPokemonSelected(index)}>
-                {(index + 1) + ' - ' + pokemon.name}
+              key={id}
+              onClick={() => onPokemonSelected(id)}>
+                {`${id + 1} - ${name}`}
             </li>
           ))}
         </ul>

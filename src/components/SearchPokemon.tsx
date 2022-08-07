@@ -20,7 +20,7 @@ export const SearchPokemon = () => {
     pokemonSearchService.getAllPokemon()
       .then((res) => {
         const pokemonDataList: SearchPokemonData = res.data
-        setPokemonList(pokemonDataList.results)
+        setPokemonList(pokemonDataList.results.map((poke, index) => ({ ...poke, id: index })))
       })
   }, [pokemonSearchService])
 

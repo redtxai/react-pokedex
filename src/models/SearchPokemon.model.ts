@@ -8,4 +8,5 @@ export interface SearchPokemonData {
 export interface SearchPokemonValue {
   name: string;
   url: string;
+  id: number;
 }
