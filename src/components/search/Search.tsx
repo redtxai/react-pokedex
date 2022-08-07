@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react'
-
 import { SearchPokemonValue } from '../../models/SearchPokemon.model';
 
 import './Search.css'
@@ -13,7 +12,7 @@ export const Search = ({ pokemonList, onPokemonSelected }: SearchProps) => {
   const timerRef = useRef(null);
 
   const [inputSearchText, setInputSearchText] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     if (inputSearchText) {
@@ -48,7 +47,7 @@ export const Search = ({ pokemonList, onPokemonSelected }: SearchProps) => {
       <input className="search-input" onKeyUp={filterPokemonList}/>
       {
         pokemonList.length > 0 && 
-        !loading && 
+        !isLoading && 
         <ul className="search-pokemon-list">
           {pokemonList.filter(pokemon => pokemon.name.includes(inputSearchText.toLowerCase())).map(({ id, name }) => (
             <li className="search-pokemon"
@@ -60,7 +59,10 @@ export const Search = ({ pokemonList, onPokemonSelected }: SearchProps) => {
         </ul>
       }
       {
-        loading && <div>loading</div>
+        isLoading &&
+        <div className="search-pikachu-running-wrapper">
+          <img className="search-pikachu-running" src='/pikachu-running.gif' alt="loading" />
+        </div>
       }
     </section>
   )
