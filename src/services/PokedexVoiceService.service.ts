@@ -11,8 +11,9 @@ export class PokedexVoiceService {
   }
 
   private mountSelectionPokemonText(selectedPokemon: PokemonValue): string {
-    const { name, types } = selectedPokemon
+    const { name, types, species } = selectedPokemon
     const typesParsed = types.map(({ name }) => name)
-    return `${name}, ${typesParsed.toString().replace(',', '-')} Pokemon`
+
+    return `${name}, ${typesParsed.toString().replace(',', '-')} Pokemon. ${species.flavorTextEntries[0].flavorText}`
   }
 }

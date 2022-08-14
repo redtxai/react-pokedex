@@ -40,9 +40,7 @@ export const SearchPokemon = () => {
     }
 
     pokemonSearchService.getPokemon(selectedSearchPokemon.url)
-      .then((res) => {
-        const { id, name, sprites, types } = res
-        const pokemon: PokemonValue = { id, name, sprites, types }
+      .then((pokemon: PokemonValue) => {
         cache[selectedSearchPokemon.name] = pokemon
         setNewCache(cache)
         selectPokemon(pokemon)
