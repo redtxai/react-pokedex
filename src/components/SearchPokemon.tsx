@@ -9,12 +9,18 @@ export const SearchPokemon = () => {
   const {
     cache, setNewCache,
     selectedPokemon, selectNewPokemon,
-    pokemonSearchService } = useContext(SearchPokemonContext)
+    pokemonSearchService,
+    pokedexVoiceService } = useContext(SearchPokemonContext)
 
   const initialListValue: SearchPokemonValue[] = []
   const [pokemonList, setPokemonList] = useState(initialListValue);
 
-  const selectPokemon = (newPokemon: PokemonValue) => newPokemon.id !== selectedPokemon.id && selectNewPokemon(newPokemon)
+  const selectPokemon = (newPokemon: PokemonValue) => {
+    if (newPokemon.id !== selectedPokemon.id) {
+      selectNewPokemon(newPokemon)
+      pokedexVoiceService.setNewPokemonSelected(newPokemon)
+    }
+  }
 
   useEffect(() => {
     pokemonSearchService.getAllPokemon()
@@ -35,7 +41,8 @@ export const SearchPokemon = () => {
 
     pokemonSearchService.getPokemon(selectedSearchPokemon.url)
       .then((res) => {
-        const pokemon: PokemonValue = res.data
+        const { id, name, sprites, types } = res
+        const pokemon: PokemonValue = { id, name, sprites, types }
         cache[selectedSearchPokemon.name] = pokemon
         setNewCache(cache)
         selectPokemon(pokemon)

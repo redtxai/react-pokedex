@@ -3,6 +3,7 @@ import { PokemonValue } from "../models/Pokemon.model";
 import { PokemonDataCache, PokemonDataState } from "../models/PokemonContext.model";
 import { DEFAULT_POKEMON } from "../utils/Utils";
 import { PokemonSearchService } from '../services/PokemonSearchService.service';
+import { PokedexVoiceService } from '../services/PokedexVoiceService.service';
 
 const contextDefaultValues: PokemonDataState = {
   cache: {},
@@ -12,6 +13,8 @@ const contextDefaultValues: PokemonDataState = {
   selectNewPokemon: () => {},
 
   pokemonSearchService: new PokemonSearchService(),
+
+  pokedexVoiceService: new PokedexVoiceService(),
 
   globalLoading: false,
   setNewGlobalLoading: () => {},
@@ -25,6 +28,7 @@ export const SearchPokemonProvider: FC = ({ children }) => {
   const [cache, setCache] = useState<PokemonDataCache>(contextDefaultValues.cache);
   const [selectedPokemon, selectPokemon] = useState<PokemonValue>(contextDefaultValues.selectedPokemon);
   const [pokemonSearchService] = useState<PokemonSearchService>(contextDefaultValues.pokemonSearchService);
+  const [pokedexVoiceService] = useState<PokedexVoiceService>(contextDefaultValues.pokedexVoiceService);
   const [globalLoading, setGlobalLoading] = useState<boolean>(contextDefaultValues.globalLoading);
 
   const setNewCache = (newCache: PokemonDataCache) => setCache(newCache);
@@ -41,6 +45,7 @@ export const SearchPokemonProvider: FC = ({ children }) => {
         selectedPokemon,
         selectNewPokemon,
         pokemonSearchService,
+        pokedexVoiceService,
         globalLoading,
         setNewGlobalLoading
       }}

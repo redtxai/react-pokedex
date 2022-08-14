@@ -1,4 +1,5 @@
 import { PokemonSearchService } from "../services/PokemonSearchService.service";
+import { PokedexVoiceService } from "../services/PokedexVoiceService.service";
 import { PokemonValue } from "./Pokemon.model"
 
 export type PokemonDataState = {
@@ -9,6 +10,7 @@ export type PokemonDataState = {
   selectNewPokemon: (pokemon: PokemonValue) => void;
 
   pokemonSearchService: PokemonSearchService
+  pokedexVoiceService: PokedexVoiceService
 
   globalLoading: boolean
   setNewGlobalLoading: (globalLoading: boolean) => void;
