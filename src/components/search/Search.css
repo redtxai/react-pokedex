@@ -1,6 +1,7 @@
 .search-wrapper {
   height: 100px;
   overflow: hidden;
+  margin-bottom: 20px;
 }
 
 .search-pokemon-list {
