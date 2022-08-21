@@ -104,11 +104,18 @@
 
 .gray-button {
   width: 50%;
+  border-radius: 0px 6px 6px 0px;
 }
 
 .gray-button:not(:last-child) {
   box-sizing: border-box;
   border-right: 2px solid #787878;
+  border-radius: 6px 0px 0px 6px;
+}
+
+.gray-button-selected {
+  opacity: 0.3;
+  background: black;
 }
 
 .footer-bumper {
